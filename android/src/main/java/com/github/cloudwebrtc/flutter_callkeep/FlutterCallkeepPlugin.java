@@ -53,10 +53,14 @@ public class FlutterCallkeepPlugin implements FlutterPlugin, MethodCallHandler, 
   }
 
   private void stopListening() {
-    channel.setMethodCallHandler(null);
-    channel = null;
-    callKeep.dispose();
-    callKeep = null;
+    if (channel != null) {
+      channel.setMethodCallHandler(null);
+      channel = null;
+    }
+    if (callKeep != null) {
+      callKeep.dispose();
+      callKeep = null;
+    }
   }
 
   @Override
